@@ -55,20 +55,20 @@ let same_vars : varidset -> varidset -> bool =
   SS.equal;;
 
 (* vars_of_list : string list -> varidset
-   Generate a set of variable names from a list of strings (for
+   Generates a set of variable names from a list of strings (for
    testing purposes) *)
 let vars_of_list : string list -> varidset =
   SS.of_list ;;
   
 (* free_vars : expr -> varidset
-   Return a set of the variable names that are free in expression
+   Returns a set of the variable names that are free in expression
    exp *)
 let free_vars (exp : expr) : varidset =
   failwith "free_vars not implemented" ;;
   
 (* new_varname : unit -> varid
-   Return a fresh variable, constructed with a running counter a la
-   gensym. Assumes no variable names use the prefix "var". (Otherwise,
+   Returns a fresh variable, constructed with a running counter a la
+   `gensym`. Assumes no variable names use the prefix "var". (Otherwise,
    they might accidentally be the same as a generated variable name.) *)
 let new_varname () : varid =
   failwith "new_varname not implemented" ;;
@@ -82,21 +82,21 @@ let new_varname () : varid =
  *)
 
 (* subst : varid -> expr -> expr -> expr
-   Substitute repl for free occurrences of var_name in exp *)
+   Substitutes `repl` for free occurrences of `var_name` in `exp` *)
 let subst (var_name : varid) (repl : expr) (exp : expr) : expr =
   failwith "subst not implemented" ;;
-
+     
 (*......................................................................
   String representations of expressions
  *)
    
     
 (* exp_to_concrete_string : expr -> string
-   Returns a concrete syntax string representation of the expr *)
+   Returns a concrete syntax string representation of `exp` *)
 let exp_to_concrete_string (exp : expr) : string =
   failwith "exp_to_concrete_string not implemented" ;;
 
 (* exp_to_abstract_string : expr -> string
-   Returns a string representation of the abstract syntax of the expr *)
+   Returns a string representation of the abstract syntax of `exp` *)
 let exp_to_abstract_string (exp : expr) : string =
   failwith "exp_to_abstract_string not implemented" ;;

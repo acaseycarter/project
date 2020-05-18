@@ -26,23 +26,23 @@ let repl () =
   let lexbuf = Lexing.from_channel stdin in
   (* set up the initial environment *)
   let env = Ev.Env.empty () in
-  printf "Entering %s...\n" Sys.argv.(0);
-  flush stdout;
+  printf "Entering %s...\n%!" Sys.argv.(0);
+
+  (* the main LOOP *)
   while true do
     (try
         (* prompt *)
-        printf "<== ";
-        flush stdout;
+        printf "<== %!";
         
-        (* read and parse an expression from the input *)
+        (* READ and parse an expression from the input *)
         let exp = MP.input ML.token lexbuf in
         
-        (* evaluate it *)
+        (* EVALuate it *)
         let res = Ev.evaluate exp env in
            
-        (* print the result; in this initial version, the trivial
+        (* PRINT the result; in this initial version, the trivial
            evaluator just returns the expression unchanged as an
-           element of the Env.value type (found in expr.ml), so we
+           element of the Env.value type (found in `expr.ml`), so we
            just extract the expr back out and print it *)
         match res with
         | Val resexp ->
@@ -62,6 +62,7 @@ let repl () =
 (* Run REPL if called from command line *)
 
 try
-  let _ = Str.search_forward (Str.regexp "miniml\\.\\(byte\\|native\\)") (Sys.argv.(0)) 0 in
+  let _ = Str.search_forward (Str.regexp "miniml\\.\\(byte\\|native\\|bc\\|exe\\)")
+                             (Sys.argv.(0)) 0 in
   repl ()
 with Not_found -> () ;;

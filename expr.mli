@@ -40,30 +40,30 @@ type expr =
   
 type varidset ;;
 
-(* same_vars varids -- Test to see if two sets have the same elements
-   (for testing purposes) *)
+(* same_vars varids1 varids2 -- Tests to see if two `varid` sets have
+   the same elements (for testing purposes) *)
 val same_vars : varidset -> varidset -> bool ;;
 
-(* vars_of_list varids -- Generate a set of variable names from a list
-   of varids (for testing purposes) *)
+(* vars_of_list varids -- Generates a set of variable names from a
+   list of `varid`s (for testing purposes) *)
 val vars_of_list : varid list -> varidset ;;
 
-(* free_vars e -- Returns the set of varids corresponding to free
-   variables in e *)
+(* free_vars e -- Returns the set of `varid`s corresponding to free
+   variables in `e` *)
 val free_vars : expr -> varidset
 
-(* new_varname () -- Return a freshly minted varid *)
+(* new_varname () -- Returns a freshly minted `varid` *)
 val new_varname : unit -> varid
 
-(* subst x p q -- Return the expression q with p substituted for free
-   occurrences of x *)
+(* subst x p q -- Return the expression `q` with `p` substituted for
+   free occurrences of `x`, avoiding variable capture *)
 val subst : varid -> expr -> expr -> expr
 
-(* exp_to_concrete_string e -- Return a string representation of the concrete
-   syntax of the expression e *)
+(* exp_to_concrete_string e -- Returns a string representation of the
+   concrete syntax of the expression `e` *)
 val exp_to_concrete_string : expr -> string
 
 (* exp_to_abstract_string e -- Return a string representation of the
-   abstract syntax of the expression e *)
+   abstract syntax of the expression `e` *)
 val exp_to_abstract_string : expr -> string
 

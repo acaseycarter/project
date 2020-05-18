@@ -24,7 +24,6 @@
                        ("rec", REC);
                        ("true", TRUE);
                        ("false", FALSE);
-                       ("lambda", FUNCTION);
                        ("fun", FUNCTION);
                        ("function", FUNCTION)
                      ]
@@ -47,7 +46,8 @@
 
 let digit = ['0'-'9']
 let id = ['a'-'z'] ['a'-'z' '0'-'9']*
-let sym = ['(' ')'] | (['+' '-' '*' '.' '=' '~' ';' '<' '>']+)
+let sym = ['(' ')'] | (['$' '&' '*' '+' '-' '/' '=' '<' '>' '^'
+                            '.' '~' ';' '!' '?' '%' ':' '#']+)
 
 rule token = parse
   | digit+ as inum

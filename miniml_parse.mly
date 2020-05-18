@@ -21,11 +21,11 @@
 %token <int> INT 
 %token TRUE FALSE
 
-%nonassoc LESSTHAN
-%nonassoc EQUALS
+%nonassoc IF
+%left LESSTHAN EQUALS
 %left PLUS MINUS
 %left TIMES
-%left NEG
+%nonassoc NEG
 
 %start input
 %type <Expr.expr> input
